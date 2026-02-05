@@ -1,0 +1,43 @@
+{% extends 'base_mobile.html' %}
+{% block title %}Account{% endblock %}
+
+{% block content %}
+
+<div class="account-card">
+
+    <!-- USER HEADER -->
+    <div class="account-user">
+        <div class="avatar">
+            {{ request.user.username|slice:":1"|upper }}
+        </div>
+        <div>
+            <div class="username">{{ request.user.username }}</div>
+            <div class="subtext">GMT +5:30</div>
+        </div>
+    </div>
+
+    <!-- OPTIONS -->
+    <div class="account-list">
+
+        <a href="/account/details/" class="account-item">
+            <span>👤</span>
+            Account Details
+            <i>›</i>
+        </a>
+
+        <a href="#" class="account-item">
+            <span>📄</span>
+            Transactions
+            <i>›</i>
+        </a>
+
+    </div>
+
+    <!-- LOGOUT -->
+    <a href="/logout/" class="logout-btn">
+        LOGOUT
+    </a>
+
+</div>
+
+{% endblock %}

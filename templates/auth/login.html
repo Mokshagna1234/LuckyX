@@ -1,0 +1,29 @@
+{% extends "base_mobile.html" %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
+<div class="auth-container">
+    <h2>Welcome Back</h2>
+
+    {% for message in messages %}
+        <div class="auth-error">{{ message }}</div>
+    {% endfor %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="auth-footer">
+        Don’t have an account?
+        <a href="/signup/">Sign up</a>
+    </p>
+</div>
+{% endblock %}

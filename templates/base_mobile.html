@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LuckyX{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/mobile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
+</head>
+
+<body>
+<div class="phone-frame">
+
+<header class="app-header">
+    <div class="brand">
+        Lucky<span>X</span>
+    </div>
+
+    <div class="auth-actions">
+
+        {% if user.is_authenticated %}
+            <span class="notif-icon">🔔</span>
+            <div class="wallet-pill">
+                ₹ <span id="wallet">990</span>
+            </div>
+        {% else %}
+            <a href="/login/" class="btn btn-outline">Login</a>
+            <a href="/signup/" class="btn btn-primary">Sign Up</a>
+        {% endif %}
+    </div>
+</header>
+
+<main class="app-content">
+    {% block content %}{% endblock %}
+</main>
+
+<nav class="bottom-nav">
+    <a href="/" class="{% if request.path == '/' %}active{% endif %}">
+        <span>🏠</span>Home
+    </a>
+    <a href="/draw/" class="{% if request.path == '/draw/' %}active{% endif %}">
+        <span>🎟️</span>Draw</a>
+    <a href="/wallet/" class="{% if request.path == '/wallet/' %}active{% endif %}">
+        <span>💰</span>Wallet</a>
+    <a href="/account/" class="{% if request.path == '/account/' %}active{% endif %}">
+        <span>👤</span>Account</a>
+</nav>
+
+</div>
+
+<script>
+    window.IS_AUTHENTICATED = {{ user.is_authenticated|yesno:"true,false" }};
+</script>
+
+<script src="{% static 'js/app.js' %}"></script>
+
+
+
+</body>
+</html>

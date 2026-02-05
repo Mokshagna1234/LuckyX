@@ -1,0 +1,50 @@
+{% extends 'base_mobile.html' %}
+{% block title %}LuckyX – Draw{% endblock %}
+
+{% block content %}
+<div id="home-page">
+<div class="lux-draw">
+
+    <div class="lux-top">
+        <div>
+            <div class="lux-live">LIVE DRAW</div>
+            <div class="lux-prize">Win ₹450</div>
+        </div>
+        <div class="lux-timer-pill">
+        <span id="timer-min">--</span>:<span id="timer-sec">--</span>
+        </div>
+    </div>
+
+    <div class="lux-progress-wrap">
+        <div class="lux-progress-bar">
+            <div class="lux-progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="lux-progress-text">
+            <span id="tickets-left">--</span> tickets left
+        </div>
+    </div>
+
+    <div class="lux-buy">
+        <div class="lux-price">
+            ₹10 <span>/ ticket</span>
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="lux-action">
+            <input type="number" id="ticket-count" value="1" min="1">
+            <button id="join-btn" onclick="joinDraw()">BUY NOW</button>
+        </div>
+        {% else %}
+        <div class="lux-msg" style="text-align:center;color:#38bdf8;">
+            Login to participate in this draw
+        </div>
+        {% endif %}
+    </div>
+
+    <div id="message" class="lux-msg"></div>
+</div>
+
+<h3 class="lux-section">Recent Winners</h3>
+<ul id="winners" class="lux-winners"></ul>
+</div>
+{% endblock %}

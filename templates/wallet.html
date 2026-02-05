@@ -1,0 +1,58 @@
+{% extends 'base_mobile.html' %}
+{% load static %}
+{% block title %}Wallet{% endblock %}
+
+{% block content %}
+
+<div id="wallet-page"><!-- 👈 ADD THIS -->
+
+    <div class="wallet-card">
+        <h2>Your Wallet</h2>
+
+        <div class="wallet-balance">
+            ₹<span id="wallet-balance">0</span>
+        </div>
+
+        <button class="primary-btn">Add Money</button>
+    </div>
+
+    <div class="section">
+    <h3 class="section-title">Recent Transactions</h3>
+
+    <div class="tx-card credit">
+        <div class="tx-icon">⬆</div>
+        <div class="tx-info">
+            <div class="tx-title">Money Added</div>
+            <div class="tx-time">Today</div>
+        </div>
+        <div class="tx-amount">+ ₹100</div>
+    </div>
+
+    <div class="tx-card debit">
+        <div class="tx-icon">🎟</div>
+        <div class="tx-info">
+            <div class="tx-title">Draw Entry</div>
+            <div class="tx-time">Just now</div>
+        </div>
+        <div class="tx-amount">− ₹10</div>
+    </div>
+
+    <div class="tx-card credit">
+        <div class="tx-icon">⬆</div>
+        <div class="tx-info">
+            <div class="tx-title">Money Added</div>
+            <div class="tx-time">Yesterday</div>
+        </div>
+        <div class="tx-amount">+ ₹50</div>
+    </div>
+
+    <a href="/wallet/history/" class="link">View full history →</a>
+</div>
+
+
+</div>
+
+<script src="{% static 'js/wallet.js' %}"></script>
+
+
+{% endblock %}

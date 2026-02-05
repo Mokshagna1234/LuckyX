@@ -1,0 +1,32 @@
+{% extends 'base_mobile.html' %}
+{% block title %}Account Details{% endblock %}
+
+{% block content %}
+
+<div class="account-card">
+
+    <h3 class="section-title">Account Details</h3>
+
+    <div class="detail-row">
+        <span>Username</span>
+        <strong>{{ request.user.username }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Email</span>
+        <strong>{{ request.user.email|default:"Not added" }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Public ID</span>
+        <strong>{{ profile.public_id }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Wallet Balance</span>
+        <strong>₹{{ profile.wallet_balance }}</strong>
+    </div>
+
+</div>
+
+{% endblock %}
